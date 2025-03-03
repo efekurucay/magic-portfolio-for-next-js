@@ -1,19 +1,19 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Ibrahim",
+  lastName: "Duman",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
+  role: "Software Developer",
   avatar: "/images/avatar.jpg",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  location: "Europe/Istanbul", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: [], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/Dumanibrahm",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
+    link: "https://www.linkedin.com/in/dumanibrahm",
   },
   {
     name: "X",
@@ -44,19 +44,28 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:example@gmail.com",
+    link: "mailto:dumanibrahm@gmail.com",
   },
+
 ];
 
 const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Design engineer and builder</>,
+  headline: <>Ibrahim Duman</>,
   subline: (
     <>
-      I'm Selene, a design engineer at <InlineCode>FLY</InlineCode>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+     <br />
+    
+      I am a fourth-year Computer Engineering student at Akdeniz 
+University, with a comprehensive knowledge base and a 
+    continual focus on enhancing my skills in <InlineCode>software 
+    development</InlineCode>. I have a deep understanding of <InlineCode>object
+    oriented programming principles </InlineCode>and have been actively 
+    developing projects in this field since my freshman year.
+      
+      
     </>
   ),
 };
@@ -73,7 +82,7 @@ const about = {
     display: true,
   },
   calendar: {
-    display: true,
+    display: false,
     link: "https://cal.com",
   },
   intro: {
@@ -81,9 +90,9 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        I am a fourth-year Computer Engineering student at Akdeniz University, with a comprehensive knowledge base and a 
+        continual focus on enhancing my skills in software development. I have a deep understanding of object-oriented 
+        programming principles and have been actively developing projects in this field since my freshman year.
       </>
     ),
   },
@@ -92,58 +101,48 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "CSART R&D",
+        timeframe: "04/2024 - 11/2024",
+        role: "Software Developer",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Working part-time as a software developer, combining studies with practical experience.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Applying and enhancing software development skills on real projects, collaborating with the team to achieve successful outcomes.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Mavi İleri Bilişim",
+        timeframe: "07/2023 - 08/2023",
+        role: "Mobile Application Development Intern",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Completed internship in mobile application development at Mavi İleri Bilişim within Akdeniz University Teknokent.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Enhanced teamwork, problem-solving, and other key skills during this first internship.
           </>,
         ],
         images: [],
       },
     ],
+
+    
   },
   studies: {
     display: true, // set to false to hide this section
-    title: "Studies",
+    title: "Education",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Akdeniz University",
+        description: <>Computer Science & Engineering (English) | 09/2020 - present | 4th Grade - 3.54 GPA</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "T.E.B Ataşehir Anatolian High School",
+        description: <>09/2015 - 07/2019 | Istanbul, Türkiye</>,
       },
     ],
   },
@@ -152,36 +151,66 @@ const about = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Programming Languages & Frameworks",
+        description: <>C#, .NET, Java, Swift, Flutter, Kotlin</>,
+        images: [],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
+        title: "Database & Backend",
+        description: <>MySQL, Firebase</>,
+        images: [],
+      },
+      {
+        title: "Soft Skills",
+        description: <>Taking Initiative And Responsibility, Good Communication Skills, Good command of English in both spoken and writing</>,
+        images: [],
+      },
+    ],
+  },
+
+  organizations: {
+    display: true, // set to false to hide this section
+    title: "Organizations",
+    experiences: [
+      {
+        company: "BİLMÖK",
+        timeframe: "04/2024 - 11/2024",
+        role: "Software Developer",
+        achievements: [
+          <>
+            Working part-time as a software developer, combining studies with practical experience.
+          </>,
+          <>
+            Applying and enhancing software development skills on real projects, collaborating with the team to achieve successful outcomes.
+          </>,
         ],
+        images: [],
+      },
+      {
+        company: "Mavi İleri Bilişim",
+        timeframe: "07/2023 - 08/2023",
+        role: "Mobile Application Development Intern",
+        achievements: [
+          <>
+            Completed internship in mobile application development at Mavi İleri Bilişim within Akdeniz University Teknokent.
+          </>,
+          <>
+            Enhanced teamwork, problem-solving, and other key skills during this first internship.
+          </>,
+        ],
+        images: [],
+      },
+    ],
+
+    
+  },
+  certifications: { 
+    display: true, // set to false to hide this section
+    title: "Certifications",
+    items: [
+      {
+        name: "AWS Cloud Essentials",
+        role: "Certified",
       },
     ],
   },
@@ -189,7 +218,7 @@ const about = {
 
 const blog = {
   label: "Blog",
-  title: "Writing about design and tech...",
+  title: "Writing about tech...",
   description: `Read what ${person.name} has been up to recently`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
@@ -201,6 +230,7 @@ const work = {
   description: `Design and dev projects by ${person.name}`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
+ 
 };
 
 const gallery = {
