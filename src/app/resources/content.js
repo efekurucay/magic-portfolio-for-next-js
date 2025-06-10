@@ -1,12 +1,12 @@
 import { InlineCode } from "@/once-ui/components";
 
 const person = {
-  firstName: "Ibrahim",
-  lastName: "Duman",
+  firstName: "Yahya Efe",
+  lastName: "Kuruçay",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Software Developer",
+  role: "AI Powered Software Developer",
   avatar: "/images/avatar.jpg",
   location: "Europe/Istanbul", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: [], // optional: Leave the array empty if you don't want to display languages
@@ -29,12 +29,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/Dumanibrahm",
+    link: "https://github.com/efekurucay",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/dumanibrahm",
+    link: "https://www.linkedin.com/in/efekurucay24",
   },
   {
     name: "X",
@@ -44,7 +44,7 @@ const social = [
   {
     name: "Email",
     icon: "email",
-    link: "mailto:dumanibrahm@gmail.com",
+    link: "mailto:contact@efekurucay.com",
   },
 
 ];
@@ -53,7 +53,7 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Ibrahim Duman</>,
+  headline: <>Yahya Efe Kuruçay</>,
   subline: (
     <>
      <br />
@@ -312,4 +312,14 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const chat = {
+  label: "AI Chat",
+};
+
+const contact = {
+  label: "Contact",
+  title: "Get in touch",
+  description: "Have a question or a project in mind? Let's talk.",
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, chat, contact };
