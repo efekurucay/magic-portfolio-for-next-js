@@ -9,9 +9,7 @@ export const getLatestActivity = async () => {
         // Gerekirse buraya bir GitHub Personal Access Token ekleyebilirsiniz
         // 'Authorization': `token ${process.env.GITHUB_TOKEN}`,
       },
-      next: {
-        revalidate: 60, // Her 60 saniyede bir yeniden doğrula
-      },
+      cache: 'no-store',
     });
 
     if (!response.ok) {
