@@ -12,7 +12,7 @@ interface StylePanelProps extends React.ComponentProps<typeof Flex> {
   className?: string;
 }
 
-const shapes = ["conservative", "playful", "rounded"];
+const shapes = ["conservative", "playful", "rounded"] as const;
 
 const colorOptions = {
   brand: [
