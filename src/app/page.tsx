@@ -7,6 +7,7 @@ import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
+import NowPlaying from "@/components/SpotifyNowPlaying";
 
 export async function generateMetadata() {
   const title = home.title;
@@ -94,12 +95,11 @@ export default function Home() {
                 {about.title}
               </Flex>
             </Button>
-
-
-
           </RevealFx>
         </Column>
       </Column>
+
+      <NowPlaying />
       
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">

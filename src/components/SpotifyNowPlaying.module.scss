@@ -1,0 +1,21 @@
+.container {
+  padding: var(--spacing-m);
+  border: 1px solid var(--color-border-neutral-strong);
+  border-radius: var(--radius-m);
+  transition: background-color 0.2s ease-in-out;
+}
+
+.link {
+  text-decoration: none;
+  display: block;
+
+  &:hover {
+    .container {
+      background-color: var(--color-surface-neutral-subtle);
+    }
+  }
+}
+
+.albumImage {
+  border-radius: var(--radius-s);
+} 
