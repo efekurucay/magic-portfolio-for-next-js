@@ -25,6 +25,8 @@ import {
   HiOutlineEyeSlash,
   HiOutlineSun,
   HiOutlineMoon,
+  HiStar,
+  HiPlus
 } from "react-icons/hi2";
 
 import {
@@ -35,6 +37,8 @@ import {
   PiImageDuotone,
   PiBrainDuotone,
 } from "react-icons/pi";
+
+import { GoGitCommit, GoIssueOpened } from "react-icons/go";
 
 import { FaDiscord, FaGithub, FaLinkedin, FaXTwitter, FaSpotify } from "react-icons/fa6";
 
@@ -74,4 +78,8 @@ export const iconLibrary: Record<string, IconType> = {
   sun: HiOutlineSun,
   moon: HiOutlineMoon,
   spotify: FaSpotify,
+  gitCommit: GoGitCommit,
+  issueOpened: GoIssueOpened,
+  plus: HiPlus,
+  star: HiStar,
 };

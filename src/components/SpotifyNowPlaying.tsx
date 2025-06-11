@@ -19,7 +19,7 @@ const NowPlaying = () => {
   useEffect(() => {
     const fetchNowPlaying = async () => {
       try {
-        const response = await fetch('/api/now-playing');
+        const response = await fetch('/api/now-playing', { cache: 'no-store' });
         if (response.ok) {
           const data = await response.json();
           setSong(data);

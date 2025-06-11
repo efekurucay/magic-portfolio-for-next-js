@@ -8,6 +8,7 @@ import { home, about, person, newsletter } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import NowPlaying from "@/components/SpotifyNowPlaying";
+import GitHubActivity from "@/components/GitHubActivity";
 
 export async function generateMetadata() {
   const title = home.title;
@@ -99,8 +100,9 @@ export default function Home() {
         </Column>
       </Column>
 
-      <Flex fillWidth horizontal="center">
+      <Flex fillWidth horizontal="center" gap="m">
         <NowPlaying />
+        <GitHubActivity />
       </Flex>
       
       {routes["/blog"] && (
