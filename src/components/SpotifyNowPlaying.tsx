@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Flex, Text, SmartLink, Icon } from '@/once-ui/components';
 import styles from './SpotifyNowPlaying.module.scss';
 
@@ -42,47 +43,53 @@ const NowPlaying = () => {
     return () => clearInterval(interval);
   }, []);
 
-  if (!song || (!song.isPlaying && !song.title)) {
+  if (!song || !song.title) {
     return (
-       <div className={styles.container}>
-        <Flex gap="m" vertical="center">
-          <Icon name="spotify" size="l" onBackground="neutral-weak" />
-          <Text variant="body-default-m" onBackground="neutral-weak">
-            Loading Spotify...
-          </Text>
-        </Flex>
-      </div>
+       <Flex gap="s" vertical="center">
+        <Icon name="spotify" size="l" onBackground="neutral-weak" />
+        <Text variant="body-default-m" onBackground="neutral-weak">
+          Not playing
+        </Text>
+      </Flex>
     )
   }
 
   return (
     <SmartLink 
       href={song.songUrl} 
-      className={styles.link} 
       target="_blank" 
       rel="noopener noreferrer"
+      style={{textDecoration: 'none', width: '100%'}}
     >
-      <div className={styles.container}>
+      <Flex gap="s" vertical="center">
         {song.albumImageUrl && (
-          <img src={song.albumImageUrl} alt={song.album || 'Album Art'} className={styles.albumImage} />
+          <Image 
+            src={song.albumImageUrl} 
+            alt={song.album || 'Album Art'}
+            width={48}
+            height={48}
+            style={{ borderRadius: 'var(--radius-s)'}}
+          />
         )}
-        <div className={styles.songInfo}>
+        <Flex direction="column" style={{ minWidth: 0, flexGrow: 1 }}>
            <Flex as="div" vertical="center" gap="s">
             <Text as="p" variant="body-strong-m" onBackground="neutral-strong" className={styles.truncate}>
               {song.title}
             </Text>
-            <Icon 
-              name="spotify" 
-              size="m" 
-              onBackground="neutral-weak" 
-              className={song.isPlaying ? styles.spotifyIconPlaying : styles.spotifyIcon}
-            />
+            {song.isPlaying && (
+              <Icon 
+                name="spotify" 
+                size="m" 
+                onBackground="brand-strong" 
+                className={styles.spotifyIconPlaying}
+              />
+            )}
           </Flex>
           <Text as="p" variant="body-default-m" onBackground="neutral-weak" className={styles.truncate}>
             {song.artist}
           </Text>
-        </div>
-      </div>
+        </Flex>
+      </Flex>
     </SmartLink>
   );
 };

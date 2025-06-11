@@ -39,9 +39,14 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkCanvasProps> = ({ cardRefs, con
     let particles: Particle[] = [];
 
     const initCanvas = () => {
+        if (!containerRef.current || !canvas) return;
+        const dpr = window.devicePixelRatio || 1;
         const containerRect = containerRef.current!.getBoundingClientRect();
-        canvas.width = containerRect.width;
-        canvas.height = containerRect.height;
+        canvas.width = containerRect.width * dpr;
+        canvas.height = containerRect.height * dpr;
+        canvas.style.width = `${containerRect.width}px`;
+        canvas.style.height = `${containerRect.height}px`;
+        ctx.scale(dpr, dpr);
 
         points = cardRefs
             .map(ref => {
@@ -103,7 +108,9 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkCanvasProps> = ({ cardRefs, con
     }
 
     const animate = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (!ctx) return;
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
       
       // Draw lines
       ctx.strokeStyle = 'rgba(0, 150, 255, 0.1)';
@@ -150,7 +157,7 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkCanvasProps> = ({ cardRefs, con
     }
 
     // Wait a bit for the layout to be stable before initializing
-    const timeoutId = setTimeout(init, 100);
+    const timeoutId = setTimeout(init, 300);
 
     const handleResize = () => {
         initCanvas();
@@ -167,7 +174,7 @@ const NeuralNetworkCanvas: React.FC<NeuralNetworkCanvasProps> = ({ cardRefs, con
     }
   }, [cardRefs, containerRef]);
 
-  return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0 }} />;
+  return <canvas ref={canvasRef} style={{ position: 'absolute', top: 0, left: 0, zIndex: 0, pointerEvents: 'none' }} />;
 };
 
 export default NeuralNetworkCanvas; 

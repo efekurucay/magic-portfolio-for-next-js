@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef } from "react";
+import Image from "next/image";
 import {
   Heading,
   Flex,
@@ -21,7 +22,20 @@ import NowPlaying from "@/components/SpotifyNowPlaying";
 import GitHubActivity from "@/components/GitHubActivity";
 import NeuralNetworkCanvas from "@/components/NeuralNetworkCanvas";
 
-export default function HomePageClient() {
+interface Content {
+  slug: string;
+  title: string;
+  summary?: string;
+  images?: string[];
+  image?: string;
+}
+
+interface HomePageClientProps {
+  latestProject: Content;
+  latestPost: Content;
+}
+
+export default function HomePageClient({ latestProject, latestPost }: HomePageClientProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const card1Ref = useRef<HTMLDivElement>(null);
   const card2Ref = useRef<HTMLDivElement>(null);
@@ -70,32 +84,54 @@ export default function HomePageClient() {
             <GitHubActivity />
           </Flex>
           {/* Contact Card */}
-          <Flex ref={card3Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{minHeight: '10rem', zIndex: 1}}>
-            <Icon name="send" size="l" onBackground="neutral-weak" />
+          <Flex ref={card3Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Heading as="h2" variant="heading-strong-s">
               Get in touch
             </Heading>
-            <Button href="/contact" variant="secondary" size="s">
+            <Text onBackground="neutral-weak" size="s" wrap="balance">
+              Have a project in mind or just want to say hi? I'd love to hear from you.
+            </Text>
+            <Button href="/contact" variant="secondary" size="s" style={{marginTop: 'auto'}}>
               Contact
             </Button>
           </Flex>
           {/* Latest Project Card */}
-          <Flex ref={card4Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{minHeight: '10rem', zIndex: 1}}>
-            <Icon name="folder" size="l" onBackground="neutral-weak" />
+          <Flex ref={card4Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Heading as="h2" variant="heading-strong-s">
               Latest Project
             </Heading>
-            <Button href="/work" variant="secondary" size="s">
+            {latestProject.images && latestProject.images.length > 0 && (
+              <div style={{ position: 'relative', width: '100%', paddingTop: '75%', borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
+                <Image
+                  src={latestProject.images[0]}
+                  alt={latestProject.title}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            )}
+            <Text onBackground="neutral-weak" size="s" wrap="balance">{latestProject.title}</Text>
+            <Button href={`/work/${latestProject.slug}`} variant="secondary" size="s" style={{marginTop: 'auto'}}>
               View
             </Button>
           </Flex>
           {/* Latest Blog Card */}
-          <Flex ref={card5Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{minHeight: '10rem', zIndex: 1}}>
-            <Icon name="post" size="l" onBackground="neutral-weak" />
+          <Flex ref={card5Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Heading as="h2" variant="heading-strong-s">
               Latest Blog
             </Heading>
-            <Button href="/blog" variant="secondary" size="s">
+            {latestPost.image && (
+              <div style={{ position: 'relative', width: '100%', paddingTop: '75%', borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
+                    <Image
+                        src={latestPost.image}
+                        alt={latestPost.title}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                    />
+              </div>
+            )}
+            <Text onBackground="neutral-weak" size="s" wrap="balance">{latestPost.title}</Text>
+            <Button href={`/blog/${latestPost.slug}`} variant="secondary" size="s" style={{marginTop: 'auto'}}>
               Read
             </Button>
           </Flex>
@@ -143,7 +179,7 @@ export default function HomePageClient() {
         <Column gap="m" style={{ minWidth: "20rem" }}>
           {/* AI Chat Card */}
           <RevealFx translateY="12" delay={0.3}>
-            <Flex direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium">
+            <Flex direction="column" gap="m" padding="m" radius="l" background="surface" border="neutral-alpha-medium">
               <Flex vertical="center" gap="s">
                 <Icon name="sparkle" size="m" onBackground="neutral-weak" />
                 <Heading as="h2" variant="heading-strong-s">
@@ -153,8 +189,21 @@ export default function HomePageClient() {
               <Text onBackground="neutral-weak" size="s">
                 Ask my AI assistant anything about me.
               </Text>
+
+              <Flex direction="column" gap="xs">
+                <Text onBackground="neutral-weak" size="s" variant="label-default-s">Or try one of these conversation starters:</Text>
+                <Flex direction="column" gap="xs" style={{alignItems: 'flex-start'}}>
+                    <Button as="link" href="/chat?q=What was your most challenging project?" variant="ghost" size="s" suffixIcon="arrowRight">
+                        What was your most challenging project?
+                    </Button>
+                    <Button as="link" href="/chat?q=Tell me about your design system" variant="ghost" size="s" suffixIcon="arrowRight">
+                        Tell me about your design system
+                    </Button>
+                </Flex>
+              </Flex>
+              
               <Button href="/chat" variant="secondary" size="s" suffixIcon="arrowRight">
-                Start chatting
+                Start a new chat
               </Button>
             </Flex>
           </RevealFx>

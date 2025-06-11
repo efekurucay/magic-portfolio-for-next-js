@@ -1,4 +1,4 @@
-const baseURL: string = "dumanibrahim.com";
+const baseURL: string = "efekurucay.com";
 
 const routes: { [key: string]: boolean } = {
   "/": true,

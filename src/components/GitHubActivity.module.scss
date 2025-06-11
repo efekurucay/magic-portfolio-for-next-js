@@ -26,25 +26,21 @@
 }
 
 .link {
-  font-weight: 500;
-  color: var(--color-text-neutral-strong);
-  text-decoration: none;
+  text-decoration: underline;
+  color: var(--color-text-brand-strong);
+  transition: color 0.2s ease-in-out;
+}
 
-  &:hover {
-    text-decoration: underline;
-  }
+.link:hover {
+  color: var(--color-text-brand-default);
 }
 
 .message {
-  font-family: var(--font-code);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-neutral-default);
+  font-family: var(--font-family-mono);
+  color: var(--color-text-neutral-medium);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  background-color: var(--color-surface-neutral-subtle);
-  padding: var(--spacing-xs) var(--spacing-s);
-  border-radius: var(--radius-s);
 }
 
 .time {

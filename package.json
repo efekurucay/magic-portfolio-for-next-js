@@ -15,6 +15,7 @@
     "@next/mdx": "^14.2.16",
     "@types/react-syntax-highlighter": "^15.5.13",
     "classnames": "^2.5.1",
+    "clsx": "^2.1.1",
     "cookie": "^1.0.1",
     "date-fns": "^4.1.0",
     "firebase": "^11.9.0",
@@ -41,7 +42,8 @@
     "sass": "^1.77.6",
     "save-dev": "^0.0.1-security",
     "sharp": "^0.33.4",
-    "swr": "^2.3.3"
+    "swr": "^2.3.3",
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@csstools/postcss-global-data": "^2.1.1",

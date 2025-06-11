@@ -8,98 +8,83 @@ import { formatDistanceToNow } from 'date-fns';
 
 const fetcher = (url: string) => fetch(url, { cache: 'no-store' }).then((res) => res.json());
 
-// Aktivite türüne göre ikon ve metin döndüren yardımcı fonksiyon
-const getActivityDetails = (activity: any) => {
-  if (!activity) return { icon: 'github', text: 'Fetching latest activity...' };
-
-  switch (activity.type) {
-    case 'commit':
-      return {
-        icon: 'gitCommit',
-        text: (
-          <>
-            Committed to <SmartLink href={activity.repoUrl} className={styles.link}>{activity.repo}</SmartLink>
-          </>
-        ),
-        message: activity.message,
-      };
-    case 'Create':
-      return {
-        icon: 'plus',
-        text: (
-          <>
-            Created a new repository <SmartLink href={activity.repoUrl} className={styles.link}>{activity.repo}</SmartLink>
-          </>
-        ),
-      };
-    case 'Issues':
-      return {
-        icon: 'issueOpened',
-        text: (
-           <>
-            Opened an issue in <SmartLink href={activity.repoUrl} className={styles.link}>{activity.repo}</SmartLink>
-          </>
-        )
-      }
-    default:
-      return {
-        icon: 'star',
-        text: (
-          <>
-            Starred a repository <SmartLink href={activity.repoUrl} className={styles.link}>{activity.repo}</SmartLink>
-          </>
-        ),
-      };
-  }
-};
-
 const GitHubActivity = () => {
   const { data: activity, error } = useSWR('/api/github', fetcher, {
-    refreshInterval: 60000, // 60 saniyede bir yeniden çek
+    refreshInterval: 60000,
   });
 
   const [timeAgo, setTimeAgo] = useState('');
 
   useEffect(() => {
     if (activity?.createdAt) {
-      setTimeAgo(formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true }));
-      const interval = setInterval(() => {
-        setTimeAgo(formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true }));
-      }, 60000);
+      const update = () => setTimeAgo(formatDistanceToNow(new Date(activity.createdAt), { addSuffix: true }));
+      update();
+      const interval = setInterval(update, 60000);
       return () => clearInterval(interval);
     }
   }, [activity]);
 
+  const renderContent = () => {
+    if (error) {
+      return (
+        <Flex gap="s" vertical="center">
+          <Icon name="github" size="l" onBackground="neutral-weak"/>
+          <Text onBackground="neutral-weak" size="s">Could not load activity.</Text>
+        </Flex>
+      );
+    }
 
-  if (error) {
+    if (!activity) {
+      return <Skeleton shape="block" style={{ width: '100%', height: '48px', borderRadius: 'var(--radius-s)' }} />;
+    }
+
+    let icon: React.ComponentProps<typeof Icon>['name'] = 'star';
+    let text: React.ReactNode = 'Starred a repository';
+
+    switch (activity.type) {
+      case 'commit':
+        icon = 'gitCommit';
+        text = 'Pushed a commit to';
+        break;
+      case 'Create':
+        icon = 'plus';
+        text = 'Created a new repository';
+        break;
+      case 'Issues':
+        icon = 'issueOpened';
+        text = 'Opened an issue in';
+        break;
+      case 'star':
+      default:
+        icon = 'star';
+        text = 'Starred a repository';
+        break;
+    }
+    
     return (
-      <div className={styles.container}>
-        <Icon name="github" size="l" onBackground="neutral-weak"/>
-        <Text onBackground="neutral-weak">Could not load GitHub activity.</Text>
-      </div>
+      <Flex direction="column" gap="xs">
+        <Flex gap="s" vertical="start">
+          <Icon name={icon} onBackground="neutral-weak" style={{flexShrink: 0, marginTop: '2px'}}/>
+          <Flex direction="column" gap="xs">
+            <Text onBackground="neutral-strong" size="s" wrap="balance">
+                {text}{' '}
+                <SmartLink href={activity.repoUrl} target="_blank" className={styles.link}>
+                    {activity.repo}
+                </SmartLink>
+            </Text>
+            {activity.message && (
+                <Text onBackground="neutral-weak" size="xs" className={styles.message}>
+                    {activity.message}
+                </Text>
+            )}
+          </Flex>
+        </Flex>
+        {timeAgo && <Text onBackground="neutral-weak" size="xs" style={{alignSelf: 'flex-end'}}>{timeAgo}</Text>}
+      </Flex>
     );
-  }
+  };
 
-  if (!activity) {
-    return (
-      <div className={styles.container}>
-        <Skeleton shape="block" style={{ width: '100%', height: '48px', borderRadius: 'var(--radius-m)' }} />
-      </div>
-    )
-  }
-
-  const { icon, text, message } = getActivityDetails(activity);
-
-  return (
-    <div className={styles.container}>
-      <Icon name={icon} size="l" onBackground="neutral-weak" className={styles.icon}/>
-      <div className={styles.activityInfo}>
-        <div className={styles.mainText}>{text}</div>
-        {message && <div className={styles.message}>{message}</div>}
-        <div className={styles.time}>{timeAgo}</div>
-      </div>
-    </div>
-  );
+  return <>{renderContent()}</>;
 };
 
 export default GitHubActivity; 
