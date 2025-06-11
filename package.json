@@ -5,7 +5,7 @@
     "dev": "next dev",
     "export": "next export",
     "build": "next build",
-    "postbuild": "rimraf .next/cache",
+    "postbuild": "rimraf .next/cache/webpack",
     "start": "next start",
     "lint": "next lint"
   },

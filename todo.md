@@ -38,4 +38,4 @@
 - [x] **Adım 5: Vercel Dağıtım Sorunlarını Giderme**
   - [x] Sunucusuz fonksiyon boyutunu aşma hatasını çözmek için `.vercelignore` dosyası oluşturuldu.
   - [x] ESLint hata ayıklaması için `next.config.mjs` dosyasında derleme sırasında linting devre dışı bırakıldı.
-  - [x] Derleme sonrası `.next/cache` dizinini silmek için `postbuild` betiği eklendi. 
+  - [x] Derleme sonrası yalnızca büyük `.next/cache/webpack` dizinini silmek için `postbuild` betiği güncellendi. 
