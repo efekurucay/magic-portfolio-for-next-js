@@ -5,6 +5,7 @@
     "dev": "next dev",
     "export": "next export",
     "build": "next build",
+    "postbuild": "rimraf .next/cache",
     "start": "next start",
     "lint": "next lint"
   },
@@ -54,6 +55,7 @@
     "eslint": "^9.28.0",
     "postcss-custom-media": "^10.0.7",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "rimraf": "^5.0.7",
     "typescript": "^5"
   }
 }
