@@ -1,6 +1,6 @@
-const baseURL = "dumanibrahim.com";
+const baseURL: string = "dumanibrahim.com";
 
-const routes = {
+const routes: { [key: string]: boolean } = {
   "/": true,
   "/about": true,
   "/work": true,
@@ -12,11 +12,47 @@ const routes = {
 
 // Enable password protection on selected routes
 // Set password in the .env file, refer to .env.example
-const protectedRoutes = {
+const protectedRoutes: { [key: string]: boolean } = {
   "/work/": true,
 };
 
-const style = {
+const style: {
+  theme: "dark" | "light";
+  neutral: "sand" | "gray" | "slate";
+  brand:
+    | "blue"
+    | "indigo"
+    | "violet"
+    | "magenta"
+    | "pink"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "moss"
+    | "green"
+    | "emerald"
+    | "aqua"
+    | "cyan";
+  accent:
+    | "blue"
+    | "indigo"
+    | "violet"
+    | "magenta"
+    | "pink"
+    | "red"
+    | "orange"
+    | "yellow"
+    | "moss"
+    | "green"
+    | "emerald"
+    | "aqua"
+    | "cyan";
+  solid: "color" | "contrast";
+  solidStyle: "flat" | "plastic";
+  border: "rounded" | "playful" | "conservative";
+  surface: "filled" | "translucent";
+  transition: "all" | "micro" | "macro";
+} = {
   theme: "dark", // dark | light
   neutral: "gray", // sand | gray | slate
   brand: "blue", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
@@ -28,7 +64,41 @@ const style = {
   transition: "all", // all | micro | macro
 };
 
-const effects = {
+const effects: {
+  mask: {
+    cursor: boolean;
+    x: number;
+    y: number;
+    radius: number;
+  };
+  gradient: {
+    display: boolean;
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    tilt: number;
+    colorStart: string;
+    colorEnd: string;
+    opacity: number;
+  };
+  dots: {
+    display: boolean;
+    size: number;
+    color: string;
+    opacity: number;
+  };
+  lines: {
+    display: boolean;
+    color: string;
+    opacity: number;
+  };
+  grid: {
+    display: boolean;
+    color: string;
+    opacity: number;
+  };
+} = {
   mask: {
     cursor: true,
     x: 0,
@@ -64,12 +134,18 @@ const effects = {
   },
 };
 
-const display = {
+const display: {
+  location: boolean;
+  time: boolean;
+} = {
   location: true,
   time: true,
 };
 
-const mailchimp = {
+const mailchimp: {
+  action: string;
+  effects: typeof effects;
+} = {
   action: "https://url/subscribe/post?parameters",
   effects: {
     mask: {

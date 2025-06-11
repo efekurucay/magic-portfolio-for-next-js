@@ -105,7 +105,7 @@ export default function Home() {
         <GitHubActivity />
       </Flex>
       
-      {Boolean(routes["/blog"]) && (
+      {routes["/blog"] && (
         <Column as="section" fillWidth gap="l">
           <Heading as="h2" variant="display-strong-xs" wrap="balance">
             Latest from the blog
@@ -122,7 +122,7 @@ export default function Home() {
         </Column>
       )}
 
-      {Boolean(routes["/work"]) && (
+      {routes["/work"] && (
         <Column as="section" fillWidth gap="l">
           <Heading as="h2" variant="display-strong-xs" wrap="balance">
             Latest from the projects
