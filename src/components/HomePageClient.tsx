@@ -21,6 +21,7 @@ import { Projects } from "@/components/work/Projects";
 import NowPlaying from "@/components/SpotifyNowPlaying";
 import GitHubActivity from "@/components/GitHubActivity";
 import NeuralNetworkCanvas from "@/components/NeuralNetworkCanvas";
+import styles from './HomePageClient.module.scss';
 
 interface Content {
   slug: string;
@@ -147,7 +148,7 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
         <NeuralNetworkCanvas containerRef={containerRef} cardRefs={[card1Ref, card2Ref, card3Ref, card4Ref, card5Ref]} />
       </div>
       
-      <Flex fillWidth gap="xl">
+      <div className={styles.responsiveFlex}>
         <Column as="section" fillWidth paddingY="l" gap="m">
           <Column maxWidth="s" gap="m">
             <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
@@ -184,7 +185,7 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
           </Column>
         </Column>
 
-        <Column gap="m" style={{ minWidth: "20rem" }}>
+        <Column gap="m" style={{ minWidth: "20rem", flexShrink: 0 }}>
           {/* AI Chat Card */}
           <RevealFx translateY="12" delay={0.3}>
             <Flex direction="column" gap="m" padding="m" radius="l" background="surface" border="neutral-alpha-medium">
@@ -216,7 +217,7 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
             </Flex>
           </RevealFx>
         </Column>
-      </Flex>
+      </div>
       
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>

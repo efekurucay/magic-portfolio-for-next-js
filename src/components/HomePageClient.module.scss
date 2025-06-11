@@ -1,0 +1,15 @@
+.responsiveFlex {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: var(--space-xl);
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .responsiveFlex {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+} 

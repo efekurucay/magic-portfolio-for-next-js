@@ -39,13 +39,14 @@ const social = [
   {
     name: "X",
     icon: "x",
-    link: "",
+    link: "https://x.com/efekurucay24",
   },
   {
     name: "Email",
     icon: "email",
     link: "mailto:contact@efekurucay.com",
   },
+
 
 ];
 
@@ -77,8 +78,8 @@ const about = {
     display: true,
   },
   calendar: {
-    display: false,
-    link: "https://cal.com",
+    display: true,
+    link: "https://efekurucay.com/",
   },
   intro: {
     display: true,
@@ -96,36 +97,60 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
-        company: "CSART R&D",
-        timeframe: "04/2024 - 11/2024",
-        role: "Software Developer",
+        company: "Acunmedya Akademi",
+        timeframe: "01/2025 - 03/2025",
+        role: "AI Development Intern",
         achievements: [
           <>
-            Working part-time as a software developer, combining studies with practical experience.
+             I improved myself in the fields of machine learning, deep learning and model development.
           </>,
-          <>
-            Applying and enhancing software development skills on real projects, collaborating with the team to achieve successful outcomes.
-          </>,
+         
         ],
         images: [],
       },
       {
-        company: "Mavi İleri Bilişim",
-        timeframe: "07/2023 - 08/2023",
-        role: "Mobile Application Development Intern",
+        company: "417 Akademi",
+        timeframe: "2024 - 2025",
+        role: "Private Math Tutor",
         achievements: [
           <>
-            Completed internship in mobile application development at Mavi İleri Bilişim within Akdeniz University Teknokent.
+            Provided personalized tutoring for middle and high school students, improving their problem-solving skills and academic performance.
           </>,
           <>
-            Enhanced teamwork, problem-solving, and other key skills during this first internship.
+            Developed effective teaching strategies and tailored educational materials to meet individual student needs.
           </>,
         ],
         images: [],
       },
-    ],
 
-    
+      {
+        company: "EFE GSM",
+        timeframe: "2022 - seasonal",
+        role: "Repair Technician & Sales Representative",
+        achievements: [
+          <>
+            I can say that I have about 10 years of experience in repairing mobile phones and selling accessories. My father's profession.
+          </>,
+        ],
+        images: [],
+
+      },
+
+      {
+        company: "ALANYA KALESPOR",
+        timeframe: "06/22 - 05/23",
+        role: "Graphic Designer & Assistant Trainer",
+        achievements: [
+          <>
+            Designed visual content for social media and web, focusing on brand identity and engagement, while also assisting in coaching 
+            young athletes to develop their skills and team coordination.
+          </>,
+        ],
+        images: [],
+      },
+      
+    ],
+   
   },
   studies: {
     display: true, // set to false to hide this section
@@ -133,26 +158,24 @@ const about = {
     institutions: [
       {
         name: "Akdeniz University",
-        description: <>Computer Science & Engineering (English) | 09/2020 - present | 4th Grade - 3.54 GPA</>,
+        description: <>Computer Science & Engineering (English) | 09/2022 - present | 3th Grade - 3.09 GPA</>,
       },
-      {
-        name: "T.E.B Ataşehir Anatolian High School",
-        description: <>09/2015 - 07/2019 | Istanbul, Türkiye</>,
-      },
+   
     ],
   },
   technical: {
     display: true, // set to false to hide this section
     title: "Technical skills",
     skills: [
+    
       {
         title: "Programming Languages & Frameworks",
-        description: <>C#, .NET, Java, Swift, Flutter, Kotlin</>,
+        description: <>Python, Java, C#, HTML, CSS, JS,  AI Prompting, Graphic Design, angular, spring boot</>,
         images: [],
       },
       {
         title: "Database & Backend",
-        description: <>MySQL, Firebase</>,
+        description: <>MySQL, Firebase, Supabase</>,
         images: [],
       },
       {
@@ -182,19 +205,28 @@ const about = {
         images: [],
       },
       {
-        company: "Mavi İleri Bilişim",
-        timeframe: "07/2023 - 08/2023",
-        role: "Mobile Application Development Intern",
+        company: "International Conference on CSE",
+        timeframe: "27,28,29/10/2024",
+        role: "Presenter",
         achievements: [
-          <>
-            Completed internship in mobile application development at Mavi İleri Bilişim within Akdeniz University Teknokent.
-          </>,
-          <>
-            Enhanced teamwork, problem-solving, and other key skills during this first internship.
+          <>  
+            International Conference on CSE [27,28,29/10/2024], Presenter
           </>,
         ],
         images: [],
       },
+      {
+        company: "Huawei Student Developers Akdeniz",
+        timeframe: "03/24 – 03/25",
+        role: "Campus Ambassador",
+        achievements: [
+          <>
+            HUAWEI [03/24 – 03/25], Campus Ambassador
+          </>,
+        ],
+        images: [],
+      },
+      
     ],
 
     
