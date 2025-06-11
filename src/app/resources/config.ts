@@ -96,6 +96,8 @@ const effects: {
   grid: {
     display: boolean;
     color: string;
+    width: number;
+    height: number;
     opacity: number;
   };
 } = {
@@ -130,6 +132,8 @@ const effects: {
   grid: {
     display: false,
     color: "neutral-alpha-weak",
+    width: 100,
+    height: 100,
     opacity: 100,
   },
 };
@@ -179,6 +183,8 @@ const mailchimp: {
     grid: {
       display: true,
       color: "neutral-alpha-weak",
+      width: 100,
+      height: 100,
       opacity: 100,
     },
   },
