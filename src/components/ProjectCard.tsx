@@ -31,13 +31,15 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
   return (
     <Column fillWidth gap="m" className={styles.card}>
-      <Carousel
-        sizes="(max-width: 960px) 100vw, 960px"
-        images={images.map((image) => ({
-          src: image,
-          alt: title,
-        }))}
-      />
+      <Flex style={{ maxHeight: "200px", overflow: "hidden", borderRadius: "var(--radius-l)" }}>
+        <Carousel
+          sizes="(max-width: 960px) 100vw, 960px"
+          images={images.map((image) => ({
+            src: image,
+            alt: title,
+          }))}
+        />
+      </Flex>
       <Flex
         mobileDirection="column"
         fillWidth

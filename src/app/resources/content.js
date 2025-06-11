@@ -58,14 +58,9 @@ const home = {
     <>
      <br />
     
-      I am a fourth-year Computer Engineering student at Akdeniz 
-University, with a comprehensive knowledge base and a 
-    continual focus on enhancing my skills in <InlineCode>software 
-    development</InlineCode>. I have a deep understanding of <InlineCode>object
-    oriented programming principles </InlineCode>and have been actively 
-    developing projects in this field since my freshman year.
-      
-      
+
+    I am a Computer Science & Engineering student with a passion for creating innovative solutions through technology. My focus areas 
+    include <InlineCode>Software Engineering</InlineCode>, Artificial Intelligence, and Full-Stack Development.
     </>
   ),
 };
@@ -90,9 +85,9 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        I am a fourth-year Computer Engineering student at Akdeniz University, with a comprehensive knowledge base and a 
-        continual focus on enhancing my skills in software development. I have a deep understanding of object-oriented 
-        programming principles and have been actively developing projects in this field since my freshman year.
+    I am a Computer Science & Engineering student with a passion for creating innovative solutions through technology. My focus areas 
+    include <InlineCode>Software Engineering</InlineCode>, Artificial Intelligence, and Full-Stack Development.
+    
       </>
     ),
   },
