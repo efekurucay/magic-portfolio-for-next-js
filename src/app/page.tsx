@@ -99,7 +99,9 @@ export default function Home() {
         </Column>
       </Column>
 
-      <NowPlaying />
+      <Flex fillWidth horizontal="center">
+        <NowPlaying />
+      </Flex>
       
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">

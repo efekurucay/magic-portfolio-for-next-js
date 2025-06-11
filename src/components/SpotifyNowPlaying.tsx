@@ -13,6 +13,15 @@ type Song = {
   songUrl?: string;
 };
 
+const Equalizer = () => (
+  <div className={styles.equalizer}>
+    <span />
+    <span />
+    <span />
+    <span />
+  </div>
+);
+
 const NowPlaying = () => {
   const [song, setSong] = useState<Song | null>(null);
 
@@ -38,31 +47,45 @@ const NowPlaying = () => {
     return () => clearInterval(interval);
   }, []);
 
+  if (!song) {
+    return (
+       <div className={styles.container}>
+        <Flex gap="m" vertical="center">
+          <Icon name="spotify" size="l" onBackground="neutral-weak" />
+          <Text variant="body-default-m" onBackground="neutral-weak">
+            Loading Spotify data...
+          </Text>
+        </Flex>
+      </div>
+    )
+  }
+
   return (
-    <div className={styles.container}>
-      {song && song.isPlaying ? (
-        <SmartLink href={song.songUrl} className={styles.link}>
-          <Flex gap="m" vertical="center">
+    <div className={styles.wrapper}>
+      <Icon name="spotify" size="l" className={styles.spotifyIcon} />
+      {song.isPlaying ? (
+        <SmartLink href={song.songUrl} className={styles.link} target="_blank" rel="noopener noreferrer">
+          <div className={styles.container}>
             {song.albumImageUrl && (
-              <SmartImage src={song.albumImageUrl} alt={song.album} width={64} height={64} className={styles.albumImage} />
+              <img src={song.albumImageUrl} alt={song.album} className={styles.albumImage} />
             )}
-            <Flex direction="column">
-              <Text variant="body-strong-m" onBackground="neutral-strong">
+            <div className={styles.songInfo}>
+              <Text variant="body-strong-m" onBackground="neutral-strong" className={styles.truncate}>
                 {song.title}
               </Text>
-              <Text variant="body-default-m" onBackground="neutral-weak">
+              <Text variant="body-default-m" onBackground="neutral-weak" className={styles.truncate}>
                 {song.artist}
               </Text>
-            </Flex>
-          </Flex>
+            </div>
+            <Equalizer />
+          </div>
         </SmartLink>
       ) : (
-        <Flex gap="m" vertical="center">
-          <Icon name="spotify" size="l" /> 
+        <div className={styles.container}>
           <Text variant="body-default-m" onBackground="neutral-weak">
             Not currently playing
           </Text>
-        </Flex>
+        </div>
       )}
     </div>
   );
