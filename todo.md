@@ -29,4 +29,8 @@
   - [ ] "Dijital Bahçe" konseptini uygulama
   - [ ] Yeni özellikler ekleme veya mevcut özellikleri geliştirme (Kullanıcı ile kararlaştırılacak).
   - [x] Kod kalitesini artırma ve yeniden düzenleme (refactoring).
-  - [ ] Hata yönetimi ve testler. 
+  - [ ] Hata yönetimi ve testler.
+  - [x] Spotify entegrasyonu
+  - [ ] Github entegrasyonu
+  - [x] Ana sayfa tasarımını iyileştirme
+  - [ ] ... (Diğer görevler) 

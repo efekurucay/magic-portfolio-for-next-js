@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column, Grid } from "@/once-ui/components";
+import { Heading, Flex, Text, Button, Avatar, RevealFx, Arrow, Column } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
@@ -41,7 +41,7 @@ export async function generateMetadata() {
 
 export default function Home() {
   return (
-    <Column maxWidth="m" gap="xl" horizontal="center">
+    <Column gap="xl" horizontal="center">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -64,15 +64,15 @@ export default function Home() {
           }),
         }}
       />
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
+      <Column as="section" fillWidth paddingY="l" gap="m">
+        <Column maxWidth="s" gap="m">
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-            <Heading wrap="balance" variant="display-strong-l">
+            <Heading wrap="balance" variant="display-strong-m">
               {home.headline}
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l">
               {home.subline}
             </Text>
           </RevealFx>
@@ -100,51 +100,43 @@ export default function Home() {
         </Column>
       </Column>
 
-      <Flex fillWidth horizontal="center" gap="m">
+      <Flex as="section" fillWidth horizontal="center" gap="m" wrap="wrap">
         <NowPlaying />
         <GitHubActivity />
       </Flex>
       
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l" direction="column" gap="m">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-            <Button
-              variant="secondary"
-              size="s"
-              href="/blog"
-              suffixIcon="arrowRight"
-            >
-              All blog posts
-            </Button>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
+      {Boolean(routes["/blog"]) && (
+        <Column as="section" fillWidth gap="l">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Latest from the blog
+          </Heading>
+          <Posts range={[1, 2]} columns="2" />
+          <Button
+            variant="secondary"
+            size="s"
+            href="/blog"
+            suffixIcon="arrowRight"
+          >
+            All blog posts
+          </Button>
+        </Column>
       )}
 
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l" direction="column" gap="m">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the projects
-            </Heading>
-            <Button
-              variant="secondary"
-              size="s"
-              href="/work"
-              suffixIcon="arrowRight"
-            >
-              All projects
-            </Button>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Projects range={[1,1]} />
-          </Flex>
-        </Flex>
+      {Boolean(routes["/work"]) && (
+        <Column as="section" fillWidth gap="l">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Latest from the projects
+          </Heading>
+          <Projects range={[1, 1]} />
+          <Button
+            variant="secondary"
+            size="s"
+            href="/work"
+            suffixIcon="arrowRight"
+          >
+            All projects
+          </Button>
+        </Column>
       )}
 
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
