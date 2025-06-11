@@ -29,7 +29,7 @@ const colorOptions = {
     "green",
     "emerald",
     "aqua",
-  ],
+  ] as const,
   accent: [
     "cyan",
     "blue",
@@ -44,8 +44,8 @@ const colorOptions = {
     "green",
     "emerald",
     "aqua",
-  ],
-  neutral: ["sand", "gray", "slate"],
+  ] as const,
+  neutral: ["sand", "gray", "slate"] as const,
 };
 
 const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref) => {
@@ -248,7 +248,7 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
         <Text variant="heading-strong-s">Solid style</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
-          Customize the appearance of interactive elements
+          Customize the appearance of solid colors
         </Text>
       </Column>
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
@@ -261,163 +261,39 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           paddingY="16"
           gap="24"
         >
-          <Text variant="label-default-s">Style</Text>
+          <Text variant="label-default-s">Contrast</Text>
           <SegmentedControl
             maxWidth={22}
-            minWidth={0}
             buttons={[
-              {
-                size: "l",
-                label: (
-                  <Flex vertical="center" gap="12">
-                    <Flex
-                      data-solid="color"
-                      border="brand-strong"
-                      solid="brand-weak"
-                      position="relative"
-                      width="24"
-                      height="24"
-                      radius="s"
-                    ></Flex>
-                    Color
-                  </Flex>
-                ),
-                value: "color",
-              },
-              {
-                size: "l",
-                label: (
-                  <Flex vertical="center" gap="12">
-                    <Flex
-                      data-solid="inverse"
-                      border="brand-strong"
-                      solid="brand-strong"
-                      position="relative"
-                      width="24"
-                      height="24"
-                      radius="s"
-                    ></Flex>
-                    Inverse
-                  </Flex>
-                ),
-                value: "inverse",
-              },
-              {
-                size: "l",
-                label: (
-                  <Flex vertical="center" gap="12">
-                    <Flex
-                      data-solid="contrast"
-                      border="brand-strong"
-                      solid="brand-strong"
-                      position="relative"
-                      width="24"
-                      height="24"
-                      radius="s"
-                    ></Flex>
-                    Contrast
-                  </Flex>
-                ),
-                value: "contrast",
-              },
+              { size: "l", label: "Color", value: "color" },
+              { size: "l", label: "Contrast", value: "contrast" },
             ]}
-            onToggle={(value) => setSolid(value as "color" | "contrast" | "inverse")}
+            onToggle={(value) => setSolid(value as "color" | "contrast")}
             selected={solid}
           />
         </Flex>
-        <Flex
-          horizontal="space-between"
-          vertical="center"
-          fillWidth
-          paddingX="24"
-          paddingY="16"
-          gap="24"
-        >
-          <Text variant="label-default-s">Effect</Text>
+        <Flex horizontal="space-between" vertical="center" fillWidth paddingX="24" paddingY="16">
+          <Text variant="label-default-s">Style</Text>
           <SegmentedControl
             maxWidth={22}
-            minWidth={0}
             buttons={[
-              {
-                size: "l",
-                label: (
-                  <Flex vertical="center" gap="12">
-                    <Flex
-                      border="brand-strong"
-                      solid="brand-weak"
-                      position="relative"
-                      width="24"
-                      height="24"
-                      radius="s"
-                    ></Flex>
-                    Flat
-                  </Flex>
-                ),
-                value: "flat",
-              },
-              {
-                size: "l",
-                label: (
-                  <Flex vertical="center" gap="12">
-                    <Flex
-                      border="brand-strong"
-                      style={{
-                        boxShadow:
-                          "inset 0 calc(-1 * var(--static-space-8)) var(--static-space-8) var(--brand-solid-strong)",
-                      }}
-                      solid="brand-weak"
-                      position="relative"
-                      width="24"
-                      height="24"
-                      radius="s"
-                    ></Flex>
-                    Plastic
-                  </Flex>
-                ),
-                value: "plastic",
-              },
+              { size: "l", label: "Flat", value: "flat" },
+              { size: "l", label: "Plastic", value: "plastic" },
             ]}
             onToggle={(value) => setSolidStyle(value as "flat" | "plastic")}
             selected={solidStyle}
           />
         </Flex>
       </Column>
+
       <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
-        <Text variant="heading-strong-s">Advanced</Text>
+        <Text variant="heading-strong-s">Transitions</Text>
         <Text variant="body-default-s" onBackground="neutral-weak">
-          Customize advanced styling options
+          Customize the page transitions
         </Text>
       </Column>
+
       <Column fillWidth border="neutral-alpha-medium" radius="l-4">
-        <Flex
-          borderBottom="neutral-alpha-medium"
-          horizontal="space-between"
-          vertical="center"
-          fillWidth
-          paddingX="24"
-          paddingY="16"
-          gap="24"
-        >
-          <Text variant="label-default-s">Surface</Text>
-          <SegmentedControl
-            maxWidth={22}
-            minWidth={0}
-            onToggle={(value) => setSurface(value as "translucent" | "filled")}
-            selected={surface}
-            buttons={[
-              {
-                size: "l",
-                label: "Filled",
-                value: "filled",
-              },
-              {
-                size: "l",
-                label: "Translucent",
-                value: "translucent",
-              },
-            ]}
-          />
-        </Flex>
         <Flex
           borderBottom="neutral-alpha-medium"
           horizontal="space-between"
@@ -430,74 +306,46 @@ const StylePanel = forwardRef<HTMLDivElement, StylePanelProps>(({ ...rest }, ref
           <Text variant="label-default-s">Scaling</Text>
           <SegmentedControl
             maxWidth={22}
-            minWidth={0}
-            onToggle={(value) => setScaling(value as "90" | "95" | "100" | "105" | "110")}
-            selected={scaling}
             buttons={[
-              {
-                size: "l",
-                label: "90",
-                value: "90",
-              },
-              {
-                size: "l",
-                label: "95",
-                value: "95",
-              },
-              {
-                size: "l",
-                label: "100",
-                value: "100",
-              },
-              {
-                size: "l",
-                label: "105",
-                value: "105",
-              },
-              {
-                size: "l",
-                label: "110",
-                value: "110",
-              },
+              { size: "l", label: "Compact", value: "compact" },
+              { size: "l", label: "Normal", value: "normal" },
             ]}
+            onToggle={(value) => setScaling(value as "compact" | "normal")}
+            selected={scaling}
           />
         </Flex>
-        <Flex
-          horizontal="space-between"
-          vertical="center"
-          fillWidth
-          paddingX="24"
-          paddingY="16"
-          gap="24"
-        >
-          <Text variant="label-default-s">Transition</Text>
+        <Flex horizontal="space-between" vertical="center" fillWidth paddingX="24" paddingY="16">
+          <Text variant="label-default-s">Animation</Text>
           <SegmentedControl
             maxWidth={22}
-            minWidth={0}
-            onToggle={(value) => setTransition(value as "all" | "micro" | "macro" | "none")}
-            selected={transition}
             buttons={[
-              {
-                size: "l",
-                label: "All",
-                value: "all",
-              },
-              {
-                size: "l",
-                label: "Micro",
-                value: "micro",
-              },
-              {
-                size: "l",
-                label: "Macro",
-                value: "macro",
-              },
-              {
-                size: "l",
-                label: "None",
-                value: "none",
-              },
+              { size: "l", label: "Micro", value: "micro" },
+              { size: "l", label: "Macro", value: "macro" },
+              { size: "l", label: "All", value: "all" },
             ]}
+            onToggle={(value) => setTransition(value as "micro" | "macro" | "all")}
+            selected={transition}
+          />
+        </Flex>
+      </Column>
+
+      <Column fillWidth paddingTop="12" paddingLeft="16" gap="4">
+        <Text variant="heading-strong-s">Surface</Text>
+        <Text variant="body-default-s" onBackground="neutral-weak">
+          Customize the surface appearance
+        </Text>
+      </Column>
+      <Column fillWidth border="neutral-alpha-medium" radius="l-4">
+        <Flex horizontal="space-between" vertical="center" fillWidth paddingX="24" paddingY="16">
+          <Text variant="label-default-s">Style</Text>
+          <SegmentedControl
+            maxWidth={22}
+            buttons={[
+              { size: "l", label: "Filled", value: "filled" },
+              { size: "l", label: "Translucent", value: "translucent" },
+            ]}
+            onToggle={(value) => setSurface(value as "filled" | "translucent")}
+            selected={surface}
           />
         </Flex>
       </Column>
