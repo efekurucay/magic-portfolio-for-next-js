@@ -218,7 +218,7 @@ const about = {
       {
         company: "Huawei Student Developers Akdeniz",
         timeframe: "03/24 – 03/25",
-        role: "Campus Ambassador",
+        role: "Campus Ambassador ",
         achievements: [
           <>
             HUAWEI [03/24 – 03/25], Campus Ambassador
