@@ -6,7 +6,7 @@ import { Flex, Text, SmartLink, Icon, Skeleton } from '@/once-ui/components';
 import styles from './GitHubActivity.module.scss';
 import { formatDistanceToNow } from 'date-fns';
 
-const fetcher = (url: string) => fetch(url).then((res) => res.json());
+const fetcher = (url: string) => fetch(url, { cache: 'no-store' }).then((res) => res.json());
 
 // Aktivite türüne göre ikon ve metin döndüren yardımcı fonksiyon
 const getActivityDetails = (activity: any) => {
