@@ -1,38 +1,22 @@
-.wrapper {
-  position: relative;
-  max-width: 320px;
-}
-
-.spotifyIcon {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  opacity: 0.3;
-  z-index: 1;
-  transition: opacity 0.2s ease-in-out;
-}
-
 .container {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-m);
+  overflow: hidden;
   padding: var(--spacing-s);
   border: 1px solid var(--color-border-neutral-strong);
   border-radius: var(--radius-m);
   transition: background-color 0.2s ease-in-out;
-  display: flex;
-  align-items: center;
-  gap: var(--spacing-s);
-  overflow: hidden;
+  max-width: 320px;
 }
 
 .link {
   text-decoration: none;
-  display: block;
+  display: inline-block;
 
   &:hover {
     .container {
       background-color: var(--color-surface-neutral-subtle);
-    }
-    .spotifyIcon {
-      opacity: 0.8;
     }
   }
 }
@@ -42,6 +26,7 @@
   height: 48px;
   border-radius: var(--radius-s);
   flex-shrink: 0;
+  object-fit: cover;
 }
 
 .songInfo {
