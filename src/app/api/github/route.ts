@@ -1,7 +1,7 @@
 import { getLatestActivity } from '@/lib/github';
 import { NextResponse } from 'next/server';
 
-export const revalidate = 60; // Bu rotayı her 60 saniyede bir yeniden doğrula
+export const dynamic = 'force-dynamic';
 
 export async function GET() {
   try {
