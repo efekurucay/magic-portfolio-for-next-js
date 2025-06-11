@@ -105,6 +105,23 @@ export default function Home() {
         <GitHubActivity />
       </Flex>
       
+      {routes["/work"] && (
+        <Column as="section" fillWidth gap="l">
+          <Heading as="h2" variant="display-strong-xs" wrap="balance">
+            Latest projects
+          </Heading>
+          <Projects range={[1, 2]} columns="2" />
+          <Button
+            variant="secondary"
+            size="s"
+            href="/work"
+            suffixIcon="arrowRight"
+          >
+            All projects
+          </Button>
+        </Column>
+      )}
+
       {routes["/blog"] && (
         <Column as="section" fillWidth gap="l">
           <Heading as="h2" variant="display-strong-xs" wrap="balance">
@@ -118,23 +135,6 @@ export default function Home() {
             suffixIcon="arrowRight"
           >
             All blog posts
-          </Button>
-        </Column>
-      )}
-
-      {routes["/work"] && (
-        <Column as="section" fillWidth gap="l">
-          <Heading as="h2" variant="display-strong-xs" wrap="balance">
-            Latest from the projects
-          </Heading>
-          <Projects range={[1, 1]} />
-          <Button
-            variant="secondary"
-            size="s"
-            href="/work"
-            suffixIcon="arrowRight"
-          >
-            All projects
           </Button>
         </Column>
       )}
