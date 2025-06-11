@@ -24,6 +24,8 @@
   - [x] Yapay zeka, "Function Calling" ile akıllı hale getirildi; artık doğal dildeki mesajları anlayıp iletişim formunu kendi kendine doldurabiliyor.
 
 - [ ] **Adım 4: Sonraki Adımlar**
+  - [x] Dinamik OG Resimleri oluşturma
+  - [ ] "Dijital Bahçe" konseptini uygulama
   - [ ] Yeni özellikler ekleme veya mevcut özellikleri geliştirme (Kullanıcı ile kararlaştırılacak).
-  - [ ] Kod kalitesini artırma ve yeniden düzenleme (refactoring).
+  - [x] Kod kalitesini artırma ve yeniden düzenleme (refactoring).
   - [ ] Hata yönetimi ve testler. 

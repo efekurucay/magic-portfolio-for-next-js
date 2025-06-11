@@ -70,3 +70,37 @@ export function getPosts(customPath = ["", "", "", ""]) {
   const postsDir = path.join(process.cwd(), ...customPath);
   return getMDXData(postsDir);
 }
+
+export function getPost(slug: string) {
+  const postsDir = path.join(process.cwd(), "src", "app", "blog", "posts");
+  const filePath = path.join(postsDir, `${slug}.mdx`);
+
+  if (!fs.existsSync(filePath)) {
+    return undefined;
+  }
+
+  const { metadata, content } = readMDXFile(filePath);
+
+  return {
+    frontmatter: metadata,
+    slug,
+    content,
+  };
+}
+
+export function getProject(slug: string) {
+  const projectsDir = path.join(process.cwd(), "src", "app", "work", "projects");
+  const filePath = path.join(projectsDir, `${slug}.mdx`);
+
+  if (!fs.existsSync(filePath)) {
+    return undefined;
+  }
+
+  const { metadata, content } = readMDXFile(filePath);
+
+  return {
+    frontmatter: metadata,
+    slug,
+    content,
+  };
+}

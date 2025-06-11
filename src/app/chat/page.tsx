@@ -154,7 +154,7 @@ export default function ChatPage() {
         )}
       </Flex>
       {showSuggestions && (
-        <Flex gap="8" align="center" justify="center" wrap="wrap" style={{ padding: '0 1rem' }}>
+        <Flex gap="8" align="center" horizontal="center" wrap style={{ padding: '0 1rem' }}>
           {suggestions.map((suggestion) => (
             <button
               key={suggestion}

@@ -94,6 +94,9 @@ export default function Home() {
                 {about.title}
               </Flex>
             </Button>
+
+
+
           </RevealFx>
         </Column>
       </Column>
