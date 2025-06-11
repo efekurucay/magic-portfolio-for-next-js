@@ -52,6 +52,7 @@ const style: {
   border: "rounded" | "playful" | "conservative";
   surface: "filled" | "translucent";
   transition: "all" | "micro" | "macro";
+  scaling: "normal" | "compact";
 } = {
   theme: "dark", // dark | light
   neutral: "gray", // sand | gray | slate
@@ -62,6 +63,7 @@ const style: {
   border: "playful", // rounded | playful | conservative
   surface: "translucent", // filled | translucent
   transition: "all", // all | micro | macro
+  scaling: "normal",
 };
 
 const effects: {
