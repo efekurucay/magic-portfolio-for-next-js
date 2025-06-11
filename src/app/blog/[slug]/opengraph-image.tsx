@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getPost } from "@/app/utils/utils";
+import { type NextRequest } from "next/server";
 
 export const runtime = "edge";
 export const alt = "Blog Post";
@@ -9,14 +9,12 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
-
-  if (!post) {
-    return new Response("Not found", { status: 404 });
-  }
-
-  const title = post.frontmatter.title;
+export default async function Image(
+  { params }: { params: { slug: string } },
+  parent: any,
+) {
+  const previousImages = (await parent).openGraph.images || [];
+  const title = previousImages[0]?.alt || "Blog Post";
 
   const font = fetch(
     new URL("../../../../public/fonts/Inter.ttf", import.meta.url)

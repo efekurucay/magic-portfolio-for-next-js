@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { getProject } from "@/app/utils/utils";
+import { type NextRequest } from "next/server";
 
 export const runtime = "edge";
 export const alt = "Work Project";
@@ -9,14 +9,12 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export default async function Image({ params }: { params: { slug: string } }) {
-  const project = getProject(params.slug);
-
-  if (!project) {
-    return new Response("Not found", { status: 404 });
-  }
-
-  const title = project.frontmatter.title;
+export default async function Image(
+  { params }: { params: { slug: string } },
+  parent: any,
+) {
+  const previousImages = (await parent).openGraph.images || [];
+  const title = previousImages[0]?.alt || "Work Project";
 
   const font = fetch(
     new URL("../../../../public/fonts/Inter.ttf", import.meta.url)
