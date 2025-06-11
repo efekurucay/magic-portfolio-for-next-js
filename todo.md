@@ -25,6 +25,7 @@
 
 - [ ] **Adım 4: Sonraki Adımlar**
   - [x] Dinamik OG Resimleri oluşturma
+  - [x] Karanlık/Aydınlık Mod Değiştirici Ekleme
   - [ ] "Dijital Bahçe" konseptini uygulama
   - [ ] Yeni özellikler ekleme veya mevcut özellikleri geliştirme (Kullanıcı ile kararlaştırılacak).
   - [x] Kod kalitesini artırma ve yeniden düzenleme (refactoring).

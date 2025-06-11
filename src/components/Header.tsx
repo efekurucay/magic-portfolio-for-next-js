@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
 
 import { routes, display } from "@/app/resources";
 import { person, home, about, blog, work, gallery, chat, contact } from "@/app/resources/content";
@@ -191,6 +192,7 @@ export const Header = () => {
             gap="20"
           >
             <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <ThemeSwitcher />
           </Flex>
         </Flex>
       </Flex>
