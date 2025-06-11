@@ -15,7 +15,7 @@ import useDebounce from "../hooks/useDebounce";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string;
-  label: string;
+  label?: string;
   height?: "s" | "m";
   error?: boolean;
   errorMessage?: ReactNode;
@@ -166,7 +166,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
               aria-describedby={displayError ? `${id}-error` : undefined}
               aria-invalid={!!displayError}
             />
-            {!labelAsPlaceholder && (
+            {!labelAsPlaceholder && label && (
               <Text
                 as="label"
                 variant="label-default-m"

@@ -7,6 +7,7 @@ import { person } from "@/app/resources/content";
 import { ChatMessageContent } from "@/components/chat/ChatMessageContent";
 import { TypingIndicator } from "@/components/chat/TypingIndicator";
 import { User } from "lucide-react";
+import styles from './chat.module.scss';
 
 type DisplayMessage = {
   text: string;
@@ -26,6 +27,7 @@ function Chat() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const [showSuggestions, setShowSuggestions] = useState(true);
   const queryHandledRef = useRef(false);
 
@@ -54,6 +56,13 @@ function Chat() {
       queryHandledRef.current = true;
     }
   }, [searchParams, sessionId]);
+
+  useEffect(() => {
+    // Refocus the input field whenever the loading state changes from true to false
+    if (!isLoading && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isLoading]);
 
   useEffect(() => {
     // Auto-scroll to the bottom
@@ -189,20 +198,21 @@ function Chat() {
           ))}
         </Flex>
       )}
-      <Flex as="form" gap="16" onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}>
+      <Flex as="form" gap="16" vertical="center" className={styles.chatForm} onSubmit={(e) => { e.preventDefault(); handleSendMessage(); }}>
         <Flex fillWidth>
           <Input
+            ref={inputRef}
             id="chat-input"
-            label="AI Chat Input"
-            placeholder="Mesajınızı buraya yazın..."
+            placeholder="Ask me anything..."
+            aria-label="Ask me anything..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
           />
         </Flex>
-        <Button type="submit" label="Gönder" prefixIcon="arrowRight" disabled={isLoading} />
-      </Flex>
+        <Button type="submit" label="↑"  aria-label="Send" prefixIcon="arrowUp" disabled={isLoading} />
+      </Flex> 
     </Column>
   );
 }
