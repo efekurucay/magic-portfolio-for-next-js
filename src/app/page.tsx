@@ -100,7 +100,7 @@ export default function Home() {
         </Column>
       </Column>
 
-      <Flex as="section" fillWidth horizontal="center" gap="m" wrap="wrap">
+      <Flex as="section" fillWidth horizontal="center" gap="m" wrap>
         <NowPlaying />
         <GitHubActivity />
       </Flex>
