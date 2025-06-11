@@ -44,7 +44,7 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
   const card5Ref = useRef<HTMLDivElement>(null);
 
   return (
-    <Column gap="xl" horizontal="center">
+    <Column gap="xl" horizontal="center" paddingX="l">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -70,14 +70,14 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
       <div style={{ position: "relative" }}>
         <Grid ref={containerRef} columns="5" mobileColumns="2" fillWidth gap="m" style={{ marginBottom: "var(--space-l)"}}>
           {/* Spotify Card */}
-          <Flex ref={card1Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{minHeight: '10rem', zIndex: 1}}>
+          <Flex ref={card1Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Text variant="label-strong-s" onBackground="neutral-weak">
               Now playing
             </Text>
             <NowPlaying />
           </Flex>
           {/* GitHub Card */}
-          <Flex ref={card2Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{minHeight: '10rem', zIndex: 1}}>
+          <Flex ref={card2Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Text variant="label-strong-s" onBackground="neutral-weak">
               GitHub Activity
             </Text>
@@ -100,40 +100,48 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
             <Heading as="h2" variant="heading-strong-s">
               Latest Project
             </Heading>
-            {latestProject.images && latestProject.images.length > 0 && (
-              <div style={{ position: 'relative', width: '100%', paddingTop: '75%', borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
-                <Image
-                  src={latestProject.images[0]}
-                  alt={latestProject.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            )}
-            <Text onBackground="neutral-weak" size="s" wrap="balance">{latestProject.title}</Text>
-            <Button href={`/work/${latestProject.slug}`} variant="secondary" size="s" style={{marginTop: 'auto'}}>
-              View
-            </Button>
+            <Flex as="div" gap="m" vertical="start" style={{ flexGrow: 1, width: '100%' }}>
+              {latestProject.images && latestProject.images.length > 0 && (
+                <div style={{ position: 'relative', width: '56px', height: '56px', flexShrink: 0, borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
+                  <Image
+                    src={latestProject.images[0]}
+                    alt={latestProject.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                </div>
+              )}
+              <Flex direction="column" gap="xs" style={{ flexGrow: 1, minHeight: '100%' }}>
+                  <Text onBackground="neutral-weak" size="s" wrap="balance">{latestProject.title}</Text>
+                  <Button href={`/work/${latestProject.slug}`} variant="secondary" size="s" style={{ marginTop: 'auto' }}>
+                      View
+                  </Button>
+              </Flex>
+            </Flex>
           </Flex>
           {/* Latest Blog Card */}
           <Flex ref={card5Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Heading as="h2" variant="heading-strong-s">
               Latest Blog
             </Heading>
-            {latestPost.image && (
-              <div style={{ position: 'relative', width: '100%', paddingTop: '75%', borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
-                    <Image
-                        src={latestPost.image}
-                        alt={latestPost.title}
-                        fill
-                        style={{ objectFit: 'cover' }}
-                    />
-              </div>
-            )}
-            <Text onBackground="neutral-weak" size="s" wrap="balance">{latestPost.title}</Text>
-            <Button href={`/blog/${latestPost.slug}`} variant="secondary" size="s" style={{marginTop: 'auto'}}>
-              Read
-            </Button>
+            <Flex as="div" gap="m" vertical="start" style={{ flexGrow: 1, width: '100%' }}>
+              {latestPost.image && (
+                <div style={{ position: 'relative', width: '56px', height: '56px', flexShrink: 0, borderRadius: 'var(--radius-m)', overflow: 'hidden' }}>
+                      <Image
+                          src={latestPost.image}
+                          alt={latestPost.title}
+                          fill
+                          style={{ objectFit: 'cover' }}
+                      />
+                </div>
+              )}
+              <Flex direction="column" gap="xs" style={{ flexGrow: 1, minHeight: '100%' }}>
+                  <Text onBackground="neutral-weak" size="s" wrap="balance">{latestPost.title}</Text>
+                  <Button href={`/blog/${latestPost.slug}`} variant="secondary" size="s" style={{ marginTop: 'auto' }}>
+                      Read
+                  </Button>
+              </Flex>
+            </Flex>
           </Flex>
         </Grid>
         <NeuralNetworkCanvas containerRef={containerRef} cardRefs={[card1Ref, card2Ref, card3Ref, card4Ref, card5Ref]} />
@@ -193,11 +201,11 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
               <Flex direction="column" gap="xs">
                 <Text onBackground="neutral-weak" size="s" variant="label-default-s">Or try one of these conversation starters:</Text>
                 <Flex direction="column" gap="xs" style={{alignItems: 'flex-start'}}>
-                    <Button as="link" href="/chat?q=What was your most challenging project?" variant="ghost" size="s" suffixIcon="arrowRight">
-                        What was your most challenging project?
+                    <Button href="/chat?q=What was your most challenging project?" variant="tertiary" size="s" suffixIcon="arrowRight">
+                        Most challenging project?
                     </Button>
-                    <Button as="link" href="/chat?q=Tell me about your design system" variant="ghost" size="s" suffixIcon="arrowRight">
-                        Tell me about your design system
+                    <Button href="/chat?q=Tell me about your design system" variant="tertiary" size="s" suffixIcon="arrowRight">
+                        About your design system
                     </Button>
                 </Flex>
               </Flex>

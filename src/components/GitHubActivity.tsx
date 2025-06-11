@@ -10,7 +10,7 @@ const fetcher = (url: string) => fetch(url, { cache: 'no-store' }).then((res) =>
 
 const GitHubActivity = () => {
   const { data: activity, error } = useSWR('/api/github', fetcher, {
-    refreshInterval: 60000,
+    refreshInterval: 300000,
   });
 
   const [timeAgo, setTimeAgo] = useState('');

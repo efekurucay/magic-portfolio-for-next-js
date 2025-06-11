@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
+import { useSearchParams } from 'next/navigation';
 import { Column, Flex, Input, Button, Avatar, ToggleButton } from "@/once-ui/components";
 import { person } from "@/app/resources/content";
 import { ChatMessageContent } from "@/components/chat/ChatMessageContent";
@@ -17,7 +18,8 @@ type HistoryMessage = {
   parts: { text: string }[];
 };
 
-export default function ChatPage() {
+function Chat() {
+  const searchParams = useSearchParams();
   const [sessionId, setSessionId] = useState("");
   const [displayMessages, setDisplayMessages] = useState<DisplayMessage[]>([]);
   const [history, setHistory] = useState<HistoryMessage[]>([]);
@@ -25,6 +27,7 @@ export default function ChatPage() {
   const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const queryHandledRef = useRef(false);
 
   const suggestions = [
     "Projelerin hakkında bilgi ver.",
@@ -42,6 +45,15 @@ export default function ChatPage() {
       }
     ]);
   }, []);
+
+  useEffect(() => {
+    if (!searchParams || !sessionId || queryHandledRef.current) return;
+    const starterQuery = searchParams.get('q');
+    if (starterQuery) {
+      handleSendMessage(starterQuery);
+      queryHandledRef.current = true;
+    }
+  }, [searchParams, sessionId]);
 
   useEffect(() => {
     // Auto-scroll to the bottom
@@ -193,4 +205,12 @@ export default function ChatPage() {
       </Flex>
     </Column>
   );
+}
+
+export default function ChatPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Chat />
+        </Suspense>
+    )
 } 
