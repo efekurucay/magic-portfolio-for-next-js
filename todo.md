@@ -39,4 +39,7 @@
   - [x] Sunucusuz fonksiyon boyutunu aşma hatasını çözmek için `.vercelignore` dosyası oluşturuldu.
   - [x] ESLint hata ayıklaması için `next.config.mjs` dosyasında derleme sırasında linting devre dışı bırakıldı.
   - [x] Vercel'in derleme ortamıyla uyumluluğu sağlamak ve önbellek şişmesini önlemek için `package.json` dosyasına SWC paketleri eklendi.
-  - [x] Derleme sonrası yalnızca büyük `.next/cache/webpack` dizinini silmek için `postbuild` betiği güncellendi. 
+  - [ ] **Adım 5: Vercel Dağıtım Sorunlarını Giderme (Devam Ediyor)**
+    - [x] `.vercelignore` ve `next.config.mjs` yapılandırmaları kalıcı olarak yapıldı.
+    - [-] `postbuild` betiği ve `optionalDependencies` denemeleri geri alındı.
+    - [ ] **Sıradaki Adım:** Vercel derleme önbelleği temizlenerek yeniden dağıtım yapılacak (Kullanıcı tarafından). 

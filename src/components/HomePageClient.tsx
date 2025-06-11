@@ -69,7 +69,7 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
         }}
       />
       <div style={{ position: "relative" }}>
-        <Grid ref={containerRef} columns="5" mobileColumns="2" fillWidth gap="m" style={{ marginBottom: "var(--space-l)"}}>
+        <Grid ref={containerRef} columns="5" mobileColumns="1" fillWidth gap="m" style={{ marginBottom: "var(--space-l)"}}>
           {/* Spotify Card */}
           <Flex ref={card1Ref} direction="column" gap="s" padding="m" radius="l" background="surface" border="neutral-alpha-medium" style={{zIndex: 1}}>
             <Text variant="label-strong-s" onBackground="neutral-weak">
@@ -150,14 +150,14 @@ export default function HomePageClient({ latestProject, latestPost }: HomePageCl
       
       <div className={styles.responsiveFlex}>
         <Column as="section" fillWidth paddingY="l" gap="m">
-          <Column maxWidth="s" gap="m">
+          <Column maxWidth="s" gap="m" horizontal="start">
             <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-              <Heading wrap="balance" variant="display-strong-m">
+              <Heading wrap="balance" variant="display-strong-m" className={styles.headline}>
                 {home.headline}
               </Heading>
             </RevealFx>
             <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l">
+              <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-l" className={styles.subline}>
                 {home.subline}
               </Text>
             </RevealFx>
