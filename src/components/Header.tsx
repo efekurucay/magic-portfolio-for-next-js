@@ -180,6 +180,8 @@ export const Header = () => {
                   />
                 </>
               )}
+              <Line vert maxHeight="24" />
+              <ThemeSwitcher />
             </Flex>
           </Flex>
         </Flex>
@@ -192,7 +194,6 @@ export const Header = () => {
             gap="20"
           >
             <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
-            <ThemeSwitcher />
           </Flex>
         </Flex>
       </Flex>
